@@ -1,0 +1,10 @@
+
+.content {
+background-color: rgb(200, 200, 245);
+margin-bottom: 1.5rem;
+border: 2px solid red;
+}
+
+.row {
+  border: 2px solid black;
+}
