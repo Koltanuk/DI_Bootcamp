@@ -11,7 +11,7 @@ console.log(finalPhrase);
 const myWatchedSeries = ["black mirror", "money heist", "the big bang theory"];
 console.log(myWatchedSeries.toString);
 let myWatchedSeriesLength = myWatchedSeries.length;
-let myWatchedSeriesSentence = myWatchedSeries[0] + ", " + myWatchedSeries[1]+", and "+myWatchedSeries[2];
+let myWatchedSeriesSentence = myWatchedSeries.join(", ");
 console.log("I watched 3 series : "+myWatchedSeriesSentence);
 
 //part 2
