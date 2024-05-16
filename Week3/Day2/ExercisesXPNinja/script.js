@@ -52,3 +52,32 @@ console.log(sum);
 
 //exercise3
 
+let strNemo = prompt('Please write a sentence containing the word “Nemo”');
+let arr = strNemo.split(" ");
+console.log(arr);
+let position = arr.indexOf('Nemo');
+if (position !== -1) {
+    console.log(`I found Nemo at `+position);
+} else {
+    console.log("I can’t find Nemo");
+}
+
+//exercise4
+
+let number = Number(prompt("Please enter a number:"));
+let result;
+if (number < 2) {
+    result = "boom";
+} else {
+    result = "B" + "o".repeat(number) + "m";
+
+    if (number % 2 === 0) {
+        result += "!";
+    }
+
+    if (number % 5 === 0) {
+        result = result.toUpperCase();
+    }
+}
+
+console.log(result);
