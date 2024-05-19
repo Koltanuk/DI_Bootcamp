@@ -41,3 +41,26 @@ if (zipPattern.test(zip)) {
 } else {
     console.log("error");
 }
+
+//Exercise 3
+
+let word = prompt("please enter a word");
+
+let replacedWord = word.replace(/[aeiouAEIOU]/g, function(match) {
+    switch (match.toLowerCase()) {
+        case 'a':
+            return '1';
+        case 'e':
+            return '2';
+        case 'i':
+            return '3';
+        case 'o':
+            return '4';
+        case 'u':
+            return '5';
+        default:
+            return match;
+    }
+});
+
+console.log("Word with vowels replaced:", replacedWord);
