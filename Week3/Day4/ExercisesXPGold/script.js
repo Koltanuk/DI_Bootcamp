@@ -27,7 +27,7 @@ if(grade>90){
 else if (grade<=90 && grade>80){
     console.log("B");
 }
-else if (70<=grade<=80){
+else if (grade<=80 && grade>=70){
     console.log("C");
 }
 else{

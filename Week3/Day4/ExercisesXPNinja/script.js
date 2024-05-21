@@ -1,7 +1,7 @@
 //Exercise1
 
-let firstYear = Number(2024);
-let secondYear = Number(1987);
+let firstYear = 2024;
+let secondYear = 1987;
 let youngerYear, ageDifference;
 if (firstYear>secondYear){
     youngerYear = firstYear;
@@ -21,16 +21,16 @@ let zip = prompt("please enter Zip code");
 //part1
 
 for(let i = 0; i<zip.length; i++){
-    if (zip[i] < '0' || zipCode[i] > '9') {
-        return "error";
+    if (zip[i] < '0' || zip[i] > '9') {
+        console.log("error");
     }    
 }
 
-if (zipCode.includes(" ") || zip.length!=5) {
-    return "error";
+if (zip.includes(" ") || zip.length<6){
+    console.log("error");
 }
 else{
-    console.log(success);
+    console.log("success");
 }
 
 // part2
