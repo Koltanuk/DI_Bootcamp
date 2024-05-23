@@ -5,12 +5,38 @@
 // console.log(isBlank('')); --> true
 // console.log(isBlank('abc')); --> false
 
+function isBlank(str) {
+    return (!str || /^\s*$/.test(str));
+}
+
+
+console.log(isBlank(''));        
+console.log(isBlank('abc'));     
+
 
 // Exercise 2 : Abbrev_name
 // Instructions
 // Write a JavaScript function to convert a string into an abbreviated form.
 
 // console.log(abbrevName("Robin Singh")); --> "Robin S."
+
+function abbrevName(fullName) {
+    
+    let nameParts = fullName.split(' ');
+
+    if (nameParts.length < 2) {
+        return fullName;
+    }
+
+    let firstName = nameParts[0];
+    let lastNameInitial = nameParts[nameParts.length - 1].charAt(0);
+
+    let abbreviatedName = `${firstName} ${lastNameInitial}.`;
+
+    return abbreviatedName;
+}
+
+console.log(abbrevName("Robin Singh")); 
 
 
 // Exercise 3 : SwapCase
@@ -21,6 +47,26 @@
 // if you input 'The Quick Brown Fox' 
 // the output should be 'tHE qUICK bROWN fOX'.
 
+
+function swapCase(str) {
+    let swapped = '';
+    
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        
+        if (char === char.toUpperCase()) {
+            
+            swapped += char.toLowerCase();
+        } else {
+            
+            swapped += char.toUpperCase();
+        }
+    }
+    
+    return swapped;
+}
+
+console.log(swapCase('The Quick Brown Fox'));
 
 // Exercise 4 : Omnipresent Value
 // Instructions
@@ -34,3 +80,16 @@
 
 // isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1) ➞ true
 // isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6) ➞ false
+
+function isOmnipresent(array, num){
+    for (let subArray of array) {
+        if (!subArray.includes(num)) {
+            return false;
+        }
+    }
+    return true
+}
+
+console.log(isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1));
+console.log(isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6));
+console.log(isOmnipresent([[3, 4], [8, 3, 2], [3], [9, 3], [5, 3], [4, 3]], 3));
