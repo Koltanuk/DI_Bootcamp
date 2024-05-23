@@ -106,10 +106,11 @@ const details = {
     is: 'Rudolf',
     the: 'raindeer'
   }
-
+let sentence = "";
   for (let key in details) {
-    console.log(key + " "+details[key]);
+    sentence+=(key + " "+details[key]+" ");
 }
+console.log(sentence);
 
 //Exercise 7
 const names = ["Jack", "Philip", "Sarah", "Amanda", "Bernard", "Kyle"];
