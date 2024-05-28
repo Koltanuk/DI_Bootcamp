@@ -1,45 +1,35 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('libform');
-    const storyElement = document.getElementById('story');
-    const shuffleButton = document.getElementById('shuffle-button');
+const solarSystem = [
+    { name: 'Mercury', color: 'gray', moons: [] },
+    { name: 'Venus', color: 'yellow', moons: [] },
+    { name: 'Earth', color: 'blue', moons: ['Moon'] },
+    { name: 'Mars', color: 'red', moons: ['Phobos', 'Deimos'] },
+    { name: 'Jupiter', color: 'orange', moons: ['Io', 'Europa', 'Ganymede', 'Callisto'] },
+    { name: 'Saturn', color: 'goldenrod', moons: ['Titan', 'Enceladus'] },
+    { name: 'Uranus', color: 'lightblue', moons: ['Miranda', 'Ariel', 'Umbriel', 'Titania', 'Oberon'] },
+    { name: 'Neptune', color: 'darkblue', moons: ['Triton'] }
+];
 
-    const stories = [
-        (noun, adjective, person, verb, place) => `${person} decided to ${verb} in the ${adjective} ${noun} at ${place}.`,
-        (noun, adjective, person, verb, place) => `In a ${adjective} ${place}, ${person} found a ${noun} and decided to ${verb} it.`,
-        (noun, adjective, person, verb, place) => `Once upon a time, a ${adjective} ${noun} was ${verb} by ${person} in ${place}.`
-    ];
+// Select the section to append the planets to
+const section = document.querySelector('.listPlanets');
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
+// Loop through the solar system array and create a div for each planet
+solarSystem.forEach(planet => {
+    const planetDiv = document.createElement('div');
+    planetDiv.classList.add('planet');
+    planetDiv.classList.add(planet.name.toLowerCase());
+    planetDiv.style.backgroundColor = planet.color;
+    planetDiv.textContent = planet.name;
 
-        const noun = document.getElementById('noun').value.trim();
-        const adjective = document.getElementById('adjective').value.trim();
-        const person = document.getElementById('person').value.trim();
-        const verb = document.getElementById('verb').value.trim();
-        const place = document.getElementById('place').value.trim();
-
-        if (!noun || !adjective || !person || !verb || !place) {
-            alert('Please fill in all the fields.');
-            return;
-        }
-
-        const randomIndex = Math.floor(Math.random() * stories.length);
-        storyElement.textContent = stories[randomIndex](noun, adjective, person, verb, place);
+    // Create moons
+    planet.moons.forEach((moon, index) => {
+        const moonDiv = document.createElement('div');
+        moonDiv.classList.add('moon');
+        moonDiv.style.left = `${index * 35}px`; // Position moons around the planet
+        moonDiv.style.top = `${index * 35}px`;  // Adjust this for better moon positioning
+        moonDiv.textContent = moon;
+        planetDiv.appendChild(moonDiv);
     });
 
-    shuffleButton.addEventListener('click', () => {
-        const noun = document.getElementById('noun').value.trim();
-        const adjective = document.getElementById('adjective').value.trim();
-        const person = document.getElementById('person').value.trim();
-        const verb = document.getElementById('verb').value.trim();
-        const place = document.getElementById('place').value.trim();
-
-        if (!noun || !adjective || !person || !verb || !place) {
-            alert('Please fill in all the fields.');
-            return;
-        }
-
-        const randomIndex = Math.floor(Math.random() * stories.length);
-        storyElement.textContent = stories[randomIndex](noun, adjective, person, verb, place);
-    });
+    // Append the planet div to the section
+    section.appendChild(planetDiv);
 });
