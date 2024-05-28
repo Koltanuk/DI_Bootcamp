@@ -1,355 +1,163 @@
-//exercise1
-// Part I : function with no parameters
+// Exercise 1 : Change The Article
 
-// Create a function called infoAboutMe() that takes no parameter.
-// The function should console.log a sentence about you (ie. your name, age, hobbies ect…).
-// Call the function.
-function infoAboutMe(){
-    concole.log ("My name is Irina");
-}
+// Using a DOM property, retrieve the h1 and console.log it.
 
-infoAboutMe();
+// Using DOM methods, remove the last paragraph in the <article> tag.
 
-// Part II : function with three parameters
+// Add a event listener which will change the background color of the h2 to red, when it’s clicked on.
 
-// Create a function called infoAboutPerson(personName, personAge, personFavoriteColor) that takes 3 parameters.
-// The function should console.log a sentence about the person (ie. “You name is …, you are .. years old, your favorite color is …”)
-// Call the function twice with the following arguments:
-// infoAboutPerson("David", 45, "blue")
-// infoAboutPerson("Josh", 12, "yellow")
+// Add an event listener which will hide the h3 when it’s clicked on (use the display:none property).
 
-function infoAboutPerson(personName, personAge, personFavoriteColor){
-    console.log("You name is "+personName+", you are "+personAge+" years old, your favorite color is "+personFavoriteColor);
-}
+// Add a <button> to the HTML file, that when clicked on, should make the text of all the paragraphs, bold.
 
-infoAboutPerson("David", 45, "blue");
-infoAboutPerson("Josh", 12, "yellow");
+// BONUS : When you hover on the h1, set the font size to a random pixel size between 0 to 100.(Check out this documentation)
 
-// 🌟 Exercise 2 : Tips
-// Instructions
-// John created a simple tip calculator to help calculate how much to tip when he and his family go to restaurants.
+// BONUS : When you hover on the 2nd paragraph, it should fade out (Check out “fade css animation” on Google)
 
-// Create a function named calculateTip() that takes no parameter.
+document.addEventListener('DOMContentLoaded', () => {
 
-// Inside the function, use prompt to ask John for the amount of the bill.
+    let h1 = document.querySelector("h1");
+    console.log(h1);
 
-// Here are the rules
-// If the bill is less than $50, tip 20%.
-// If the bill is between $50 and $200, tip 15%.
-// If the bill is more than $200, tip 10%.
+    let article = document.querySelector("article");
+    let lastParagraph = article.querySelector('p:last-of-type');
+    lastParagraph.remove();
 
-// Console.log the tip amount and the final bill (bill + tip).
+    let h2 = document.querySelector('h2');
+    h2.addEventListener('click', () => {
+        h2.style.backgroundColor = 'red';
+    });
 
-// Call the calculateTip() function.
-
-function calculateTip(){
-    let bill = parseInt(prompt("Please enter the bill sum"));
-    if(bill<50){
-        console.log("tip 20% , sum is "+ (bill*0.2+bill));
-    }
-    else if (bill>=50 && bill <=200){
-        console.log("tip 15% , sum is " + (bill*0.15+bill));
-    }
-    else{
-        console.log("tip 10% , sum is " + (bill*0.1+bill));
-    }
-}
-
-calculateTip();
-
-// 🌟 Exercise 3 : Find The Numbers Divisible By 23
-// Instructions
-// Create a function call isDivisible() that takes no parameter.
-
-// In the function, loop through numbers 0 to 500.
-
-// Console.log all the numbers divisible by 23.
-
-// At the end, console.log the sum of all numbers that are divisible by 23.
-
-// Outcome : 0 23 46 69 92 115 138 161 184 207 230 253 276 299 322 345 368
-// 391 414 437 460 483
-// Sum : 5313
-
-function isDivisible(){
-    let sum = 0;
-    for (let i = 0; i <= 500; i=i+23) {
-        sum+=i;
-        console.log(i);
-    }
-    console.log(sum);
-}
-isDivisible();
+    let h3 = document.querySelector("h2");
+    h3.addEventListener('click', () => {
+        h3.style.display = 'none';
+    });
 
 
-// Bonus: Add a parameter divisor to the function.
+    let button = document.getElementById('boldButton');
+    button.addEventListener('click', () => {
+    let paragraphs = document.querySelectorAll('article p');
+        paragraphs.forEach(paragraph => {
+        paragraph.style.fontWeight = 'bold';
+        });
+    });
 
-// isDivisible(divisor)
+    h1.addEventListener('mouseover', () => {
+        const randomSize = Math.floor(Math.random() * 101);
+        h1.style.fontSize = `${randomSize}px`;
+    });
 
-// Example:
-// isDivisible(3) : Console.log all the numbers divisible by 3, and their sum
-// isDivisible(45) : Console.log all the numbers divisible by 45, and their sum
+    let secondParagraph = document.querySelector('article p:nth-of-type(2)');
+    secondParagraph.addEventListener('mouseover', () => {
+        secondParagraph.classList.add('fade-out');
+    });
 
-function isDivisible(divisor){
-    let sum = 0;
-    for (let i = 0; i <= 500; i=i+divisor) {
-        sum+=i;
-        console.log(i);
-    }
-    console.log(sum);
-}
+// Exercise 2
 
-isDivisible(3);
-isDivisible(45);
+// Retrieve the form and console.log it.
+
+// Retrieve the inputs by their id and console.log them.
+
+// Retrieve the inputs by their name attribute and console.log them.
+
+// When the user submits the form (ie. submit event listener)
+// use event.preventDefault(), why ?
+// get the values of the input tags,
+// make sure that they are not empty,
+// create an li per input value,
+// then append them to a the <ul class="usersAnswer"></ul>, below the form.
 
 
+    // Retrieve the form and console.log it
+    const form = document.getElementById('userForm');
+    console.log(form);
 
-// 🌟 Exercise 4 : Shopping List
-// Instructions
+    // Retrieve the inputs by their id and console.log them
+    const firstNameInput = document.getElementById('fname');
+    const lastNameInput = document.getElementById('lname');
+    console.log(firstNameInput);
+    console.log(lastNameInput);
 
-// Add the stock and prices objects to your js file.
+    // Retrieve the inputs by their name attribute and console.log them
+    const firstNameByName = document.querySelector('input[name="firstname"]');
+    const lastNameByName = document.querySelector('input[name="lastname"]');
+    console.log(firstNameByName);
+    console.log(lastNameByName);
 
-// Create an array called shoppingList with the following items: “banana”, “orange”, and “apple”. It means that you have 1 banana, 1 orange and 1 apple in your cart.
+    // Add event listener for form submission
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent the default form submission behavior
 
-// Create a function called myBill() that takes no parameters.
+        // Get the values of the input tags
+        const firstNameValue = firstNameInput.value.trim();
+        const lastNameValue = lastNameInput.value.trim();
 
-// The function should return the total price of your shoppingList. In order to do this you must follow these rules:
-// The item must be in stock. (Hint : check out if .. in)
-// If the item is in stock find out the price in the prices object.
+        // Check that the input values are not empty
+        if (firstNameValue !== '' && lastNameValue !== '') {
+            // Create an li per input value
+            const firstNameLi = document.createElement('li');
+            firstNameLi.textContent = firstNameValue;
 
-// Call the myBill() function.
-// Bonus: If the item is in stock, decrease the item’s stock by 1
+            const lastNameLi = document.createElement('li');
+            lastNameLi.textContent = lastNameValue;
 
-const stock = { 
-    "banana": 6, 
-    "apple": 0,
-    "pear": 12,
-    "orange": 32,
-    "blueberry":1
-}  
+            // Append the li elements to the <ul class="usersAnswer"></ul>
+            const usersAnswerList = document.querySelector('.usersAnswer');
+            usersAnswerList.appendChild(firstNameLi);
+            usersAnswerList.appendChild(lastNameLi);
 
-const prices = {    
-    "banana": 4, 
-    "apple": 2, 
-    "pear": 1,
-    "orange": 1.5,
-    "blueberry":10
-}
-
-let shoppingList = ["banana", "orange", "apple"];
-
-function myBill(){
-    let sum = 0; 
-    shoppingList.forEach(product => {
-        if(product in stock && stock[item]>0){
-            sum+= prices[product];
-            stock[item]-= 1;
+            // Optionally, clear the input fields after submission
+            firstNameInput.value = '';
+            lastNameInput.value = '';
+        } else {
+            alert('Please fill in both the first name and last name.');
         }
     });
-    return sum;
-}
-const totalPrice = myBill();
-console.log("Total price of the shopping list:", totalPrice);
 
-
-// Exercise 5 : What’s In My Wallet ?
+//     Exercise 3 : Transform The Sentence
 // Instructions
-// Note: Read the illustration (point 4), while reading the instructions
+// Add this sentence to your HTML file then follow the steps :
 
-// Create a function named changeEnough(itemPrice, amountOfChange) that receives two arguments :
-// an item price
-// and an array representing the amount of change in your pocket.
-
-// In the function, determine whether or not you can afford the item.
-// If the sum of the change is bigger or equal than the item’s price (ie. it means that you can afford the item), the function should return true
-// If the sum of the change is smaller than the item’s price (ie. it means that you cannot afford the item) the function should return false
-
-// Change will always be represented in the following order: quarters, dimes, nickels, pennies.
-// A quarters is 0.25
-// A dimes is 0.10
-// A nickel is 0.05
-// A penny is 0.01
+// <p><strong>Hello</strong> I hope you are enjoying <strong>this</strong> class. At the
+// <strong>end</strong> you <strong>will</strong> be great Developers!
+// <strong>Enjoy</strong> the <strong>JavaScript </strong> lessons</p>
 
 
-// 4. To illustrate:
+// In the JS file:
 
-// After you created the function, invoke it like this:
+// Declare a global variable named allBoldItems.
 
-// changeEnough(4.25, [25, 20, 5, 0])
-// The value 4.25 represents the item’s price
-// The array [25, 20, 5, 0] represents 25 quarters, 20 dimes, 5 nickels and 0 pennies.
-// The function should return true, since having 25 quarters, 20 dimes, 5 nickels and 0 pennies gives you 6.25 + 2 + .25 + 0 = 8.50 which is bigger than 4.25 (the total amount due)
+// Create a function called getBoldItems() that takes no parameter. This function should collect all the bold items inside the paragraph and assign them to the allBoldItems variable.
 
-function changeEnough(itemPrice, amountOfChange){
-    let sum = amountOfChange[0]*0.25 + amountOfChange[1]*0.1 + amountOfChange[2]*0.05 + amountOfChange[3]*0.01;
-    if (itemPrice<=sum){
-        return true;
-    }
-    return false;
-}
+// Create a function called highlight() that changes the color of all the bold text to blue.
 
-changeEnough(4.25, [25, 20, 5, 0]);
-changeEnough(14.11, [2,100,0,0]);
-changeEnough(0.75, [0,0,20,5]);
+// Create a function called returnItemsToDefault() that changes the color of all the bold text back to black.
 
-// Examples
-
-// changeEnough(14.11, [2,100,0,0]) => returns false
-// changeEnough(0.75, [0,0,20,5]) => returns true
+// Call the function highlight() on mouseover (ie. when the mouse pointer is moved onto the paragraph), and the function returnItemsToDefault() on mouseout (ie. when the mouse pointer is moved out of the paragraph). Look at this example
 
 
-// 🌟 Exercise 6 : Vacations Costs
-// Instructions
-// Let’s create functions that calculate your vacation’s costs:
-
-// Define a function called hotelCost().
-// It should ask the user for the number of nights they would like to stay in the hotel.
-// If the user doesn’t answer or if the answer is not a number, ask again.
-// The hotel costs $140 per night. The function should return the total price of the hotel.
-
-// Define a function called planeRideCost().
-// It should ask the user for their destination.
-// If the user doesn’t answer or if the answer is not a string, ask again.
-// The function should return a different price depending on the location.
-// “London”: 183$
-// “Paris” : 220$
-// All other destination : 300$
-
-// Define a function called rentalCarCost().
-// It should ask the user for the number of days they would like to rent the car.
-// If the user doesn’t answer or if the answer is not a number, ask again.
-// Calculate the cost to rent the car. The car costs $40 everyday.
-// If the user rents a car for more than 10 days, they get a 5% discount.
-// The function should return the total price of the car rental.
-
-// Define a function called totalVacationCost() that returns the total cost of the user’s vacation by calling the 3 functions that you created above.
-// Example : The car cost: $x, the hotel cost: $y, the plane tickets cost: $z.
-// Hint: You have to call the functions hotelCost(), planeRideCost() and rentalCarCost() inside the function totalVacationCost().
-
-// Call the function totalVacationCost()
-
-
-function hotelCost(){
-    let days;
-    while (true) {
-        days = parseInt(prompt("How many days would you like to stay in the hotel?"));
-        if (!isNaN(days) && days > 0) {
-            break;
-        }
-        alert("Please enter a valid number of days.");
-    }
-    return days*140;
-
-}
-
-function planeRideCost(){
-    let destination;
-    while (true) {
-        destination = prompt("What is your destination?");
-        if (destination && isNaN(destination)) {
-            break;
-        }
-        alert("Please enter a valid destination.");
-    }
-    const destinationPrices = {
-        "London": 183,
-        "Paris": 220
-    };
-    
-    if (destination in destinationPrices) {
-        return destinationPrices[destination];
-    }
-    
-    return 300;
-    
-}
-
-function rentalCarCost(){
-    let days;
-    while (true) {
-        days = parseInt(prompt("How many days would you like to rent a car?"));
-        if (!isNaN(days) && days > 0) {
-            break;
-        }
-        alert("Please enter a valid number of days.");
-    }
-    if (days>10){
-        return days*40*0.95;
-    }
-    return days*40;
-}
-
-function totalVacationCost(){
- 
-    return hotelCost()+planeRideCost()+rentalCarCost();
-
-}
-
-
-totalVacationCost();
-
-// Bonus: Instead of using a prompt inside the 3 first functions, only use a prompt inside the totalVacationCost() function. You need to change the 3 first functions, accordingly.
-
-function hotelCost(hotelsdays){
-    return hotelsdays*140;
-}
-
-function planeRideCost(destination){
-    
-    const destinationPrices = {
-        "London": 183,
-        "Paris": 220
-    };
-    
-    if (destination in destinationPrices) {
-        return destinationPrices[destination];
-    }
-    
-    return 300;
-    
-}
-
-function rentalCarCost(days){
-    
-    if (days>10){
-        return days*40*0.95;
-    }
-    return days*40;
-}
-
-
-function totalVacationCostBonus(){
- 
-    let hotelsdays;
-    while (true) {
-        hotelsdays = parseInt(prompt("How many days would you like to stay in the hotel?"));
-        if (!isNaN(hotelsdays) && hotelsdays > 0) {
-            break;
-        }
-        alert("Please enter a valid number of days.");
+    let allBoldItems;
+    function getBoldItems() {
+        allBoldItems = document.querySelectorAll('#sentence strong');
     }
 
-    let destination;
-    while (true) {
-        destination = prompt("What is your destination?");
-        if (destination && isNaN(destination)) {
-            break;
-        }
-        alert("Please enter a valid destination.");
+    function highlight() {
+        getBoldItems(); 
+        allBoldItems.forEach(item => {
+            item.style.color = 'blue';
+        });
     }
 
-    let carDays;
-    while (true) {
-        carDays = parseInt(prompt("How many days would you like to rent a car?"));
-        if (!isNaN(carDays) && carDays > 0) {
-            break;
-        }
-        alert("Please enter a valid number of days.");
+    function returnItemsToDefault() {
+        allBoldItems.forEach(item => {
+            item.style.color = 'black';
+        });
     }
 
+    const parag= document.getElementById('sentence');
+    parag.addEventListener('mouseover', highlight);
+    parag.addEventListener('mouseout', returnItemsToDefault);
 
-    return hotelCost(hotelsdays)+planeRideCost(destination)+rentalCarCost(carDays);
-}
+    getBoldItems();
 
-let sumTotalVacationCostBonus = totalVacationCostBonus();
-console.log(sumTotalVacationCostBonus);
+});

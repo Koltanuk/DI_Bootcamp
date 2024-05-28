@@ -1,57 +1,45 @@
-// Instructions
-// Prompt the user for several words (separated by commas).
-// Put the words into an array.
-// Console.log the words one per line, in a rectangular frame as seen below.
-// Check out the Hints and Requirements below.
-// For example, if the user gives you:
-// Hello,World,in,a,frame
-// you will transform it to : ["Hello", "World", "in", "a", "frame"]
-// that will get displayed as:
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('libform');
+    const storyElement = document.getElementById('story');
+    const shuffleButton = document.getElementById('shuffle-button');
 
-// stars and words
+    const stories = [
+        (noun, adjective, person, verb, place) => `${person} decided to ${verb} in the ${adjective} ${noun} at ${place}.`,
+        (noun, adjective, person, verb, place) => `In a ${adjective} ${place}, ${person} found a ${noun} and decided to ${verb} it.`,
+        (noun, adjective, person, verb, place) => `Once upon a time, a ${adjective} ${noun} was ${verb} by ${person} in ${place}.`
+    ];
 
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-// Hint
-// The number of stars that wraps the sentence, must depend on the length of the longest word.
+        const noun = document.getElementById('noun').value.trim();
+        const adjective = document.getElementById('adjective').value.trim();
+        const person = document.getElementById('person').value.trim();
+        const verb = document.getElementById('verb').value.trim();
+        const place = document.getElementById('place').value.trim();
 
-let enteredData = prompt("Please enter several words separated by comma");
-let array = enteredData.split(",");
-console.log(array);
-let longestLength=0;
-for (let i = 0; i < array.length; i++) {
-    const element = array[i];
-    element.trim();
-    if(element.length>longestLength){
-        longestLength=element.length;
-    }
-}
-
-console.log(longestLength);
-
-function firstAndLastLineOutput(){
-    let result = "";  
-    for (let i = 0; i < longestLength+4; i++) {
-        result += "*";  
-    }
-    console.log(result);
-}
-
-function output(){
-    firstAndLastLineOutput();
-
-    for (let i = 0; i < array.length; i++) {
-        outputLine= "* ";
-        outputLine+=array[i];
-        let whitespacesCount = longestLength-array[i].length;
-        for (let j = 0; j < whitespacesCount; j++) {
-            outputLine+=" ";
+        if (!noun || !adjective || !person || !verb || !place) {
+            alert('Please fill in all the fields.');
+            return;
         }
-        outputLine+=" *";
-        console.log(outputLine.trim());
-    }
 
-    firstAndLastLineOutput();
-}
+        const randomIndex = Math.floor(Math.random() * stories.length);
+        storyElement.textContent = stories[randomIndex](noun, adjective, person, verb, place);
+    });
 
-output();
+    shuffleButton.addEventListener('click', () => {
+        const noun = document.getElementById('noun').value.trim();
+        const adjective = document.getElementById('adjective').value.trim();
+        const person = document.getElementById('person').value.trim();
+        const verb = document.getElementById('verb').value.trim();
+        const place = document.getElementById('place').value.trim();
 
+        if (!noun || !adjective || !person || !verb || !place) {
+            alert('Please fill in all the fields.');
+            return;
+        }
+
+        const randomIndex = Math.floor(Math.random() * stories.length);
+        storyElement.textContent = stories[randomIndex](noun, adjective, person, verb, place);
+    });
+});
