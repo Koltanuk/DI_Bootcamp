@@ -20,6 +20,7 @@ console.log(array);
 let longestLength=0;
 for (let i = 0; i < array.length; i++) {
     const element = array[i];
+    element.trim();
     if(element.length>longestLength){
         longestLength=element.length;
     }

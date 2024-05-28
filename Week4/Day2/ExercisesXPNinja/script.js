@@ -4,6 +4,16 @@
 // Console.log all even numbers from 0 to the random number.
 
 
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+
+console.log(`Random number: ${randomNumber}`);
+
+for (let i = 0; i <= randomNumber; i++) {
+    if (i % 2 === 0) {
+        console.log(i);
+    }
+}
+
 // Exercise 2: Capitalized Letters
 // Instructions
 // Create a function that takes a string as an argument.
@@ -17,6 +27,8 @@
 // For example,
 
 // capitalize("abcdef") will return ['AbCdEf', 'aBcDeF']
+
+
 
 
 // Exercise 3 : Is Palindrome?
