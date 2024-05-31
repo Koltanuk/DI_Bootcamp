@@ -1,95 +1,66 @@
-// Exercise 1 : Is_Blank
-// Instructions
-// Write a program to check whether a string is blank or not.
+const genres = document.getElementById('genres');
 
-// console.log(isBlank('')); --> true
-// console.log(isBlank('abc')); --> false
+let selectedGenre = genres.value;
 
-function isBlank(str) {
-    return (!str || /^\s*$/.test(str));
+console.log(selectedGenre);
+
+let newOption = document.createElement('option');
+newOption.value = 'classic';
+newOption.textContent = 'Classic';
+
+genres.appendChild(newOption);
+
+genres.value = 'classic';
+selectedGenre = genres.value;
+
+console.log(selectedGenre);
+
+//exercise2
+
+function removeColor() {
+    const colorSelect = document.getElementById('colorSelect');
+    const selectedOption = colorSelect.options[colorSelect.selectedIndex];
+    colorSelect.removeChild(selectedOption);
 }
+document.querySelector('input[type="button"]').addEventListener('click', removeColor);
 
+//Exercise3
 
-console.log(isBlank(''));        
-console.log(isBlank('abc'));     
+let shoppingList = [];
+const root = document.getElementById('root');
+const form = document.createElement('form');
+let inputField = document.createElement('input');
 
+inputField.type = 'text';
+inputField.placeholder='Add a new item';
+inputField.id = 'inputItem';
 
-// Exercise 2 : Abbrev_name
-// Instructions
-// Write a JavaScript function to convert a string into an abbreviated form.
+let addButton = document.createElement('button');
+addButton.type = 'button';
+addButton.textContent = 'Add Item';
+addButton.addEventListener('click', addItem);
 
-// console.log(abbrevName("Robin Singh")); --> "Robin S."
+let clearButton = document.createElement('button');
+clearButton.type = 'button';
+clearButton.textContent = 'ClearAll';
+clearButton.addEventListener('click', clearAll);
 
-function abbrevName(fullName) {
-    
-    let nameParts = fullName.split(' ');
+form.appendChild(inputField);
+form.appendChild(addButton);
 
-    if (nameParts.length < 2) {
-        return fullName;
+root.appendChild(form);
+root.appendChild(clearButton);
+
+function addItem(){
+    let inputValue = document.getElementById('inputItem').value;
+    if(inputValue.trim()!==''){
+        shoppingList.push(inputValue.trim());
+        console.log('Shopping List:', shoppingList);
+        inputField.value = '';
     }
-
-    let firstName = nameParts[0];
-    let lastNameInitial = nameParts[nameParts.length - 1].charAt(0);
-
-    let abbreviatedName = `${firstName} ${lastNameInitial}.`;
-
-    return abbreviatedName;
 }
 
-console.log(abbrevName("Robin Singh")); 
-
-
-// Exercise 3 : SwapCase
-// Instructions
-// Write a JavaScript function which takes a string as an argument and swaps the case of each character.
-// For example :
-
-// if you input 'The Quick Brown Fox' 
-// the output should be 'tHE qUICK bROWN fOX'.
-
-
-function swapCase(str) {
-    let swapped = '';
-    
-    for (let i = 0; i < str.length; i++) {
-        let char = str[i];
-        
-        if (char === char.toUpperCase()) {
-            
-            swapped += char.toLowerCase();
-        } else {
-            
-            swapped += char.toUpperCase();
-        }
-    }
-    
-    return swapped;
+function clearAll() {
+    shoppingList = [];
+    console.log('Shopping List cleared');
 }
-
-console.log(swapCase('The Quick Brown Fox'));
-
-// Exercise 4 : Omnipresent Value
-// Instructions
-// Create a function that determines whether an argument is omnipresent for a given array.
-// A value is omnipresent if it exists in every subarray inside the main array.
-// To illustrate:
-
-// [[3, 4], [8, 3, 2], [3], [9, 3], [5, 3], [4, 3]]
-// // 3 exists in every element inside this array, so is omnipresent.
-// Examples
-
-// isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1) ➞ true
-// isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6) ➞ false
-
-function isOmnipresent(array, num){
-    for (let subArray of array) {
-        if (!subArray.includes(num)) {
-            return false;
-        }
-    }
-    return true
-}
-
-console.log(isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 1));
-console.log(isOmnipresent([[1, 1], [1, 3], [5, 1], [6, 1]], 6));
-console.log(isOmnipresent([[3, 4], [8, 3, 2], [3], [9, 3], [5, 3], [4, 3]], 3));
