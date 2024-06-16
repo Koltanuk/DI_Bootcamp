@@ -1,6 +1,8 @@
 
 setTimeout(alertHello, 2000);
+
 setTimeout(addParragraph, 2000);
+
 const interval = setInterval(addParragraph,2000);
 
 function alertHello(){
@@ -19,7 +21,6 @@ function addParragraph(){
         clearParagraphInterval()
     }
 }
-
 
 const button = document.getElementById('clear');
 button.addEventListener('click', clearParagraphInterval);

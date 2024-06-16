@@ -3,7 +3,7 @@ function myMove() {
     let pos = 0;
     const containerWidth = document.getElementById("container").offsetWidth;
     const elemWidth = elem.offsetWidth;
-    const id = setInterval(frame, 1);
+    const id = setInterval(frame, 200);
 
     function frame() {
         if (pos >= containerWidth - elemWidth) {

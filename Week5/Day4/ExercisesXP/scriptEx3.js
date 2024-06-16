@@ -1,28 +1,28 @@
 const red = document.getElementById("box");
-const yellow = document.getElementById("target");
+const target = document.getElementById("target");
 
 
-yellow.addEventListener('dragover', handleDragEnter);
-yellow.addEventListener('dragenter', handleDragEnter);
-yellow.addEventListener('dragleave', handleDragLeave);
-yellow.addEventListener('drop', handleDrop);
+target.addEventListener('dragover', handleDragEnter);
+target.addEventListener('dragenter', handleDragEnter);
+target.addEventListener('dragleave', handleDragLeave);
+target.addEventListener('drop', handleDrop);
 
 function handleDragLeave(event){
     event.preventDefault();
-    yellow.classList.remove('is-hovered');
+    target.classList.remove('is-hovered');
 }
 
 function handleDragEnter(event){
     event.preventDefault();
-    yellow.classList.add('is-hovered');
+    target.classList.add('is-hovered');
 }
 
 function handleDragEnter(event){
-    yellow.classList.remove('is-hovered');
-    yellow.append(red);
+    target.classList.remove('is-hovered');
+    target.append(red);
 }
 
 function handleDrop(){
-    yellow.classList.remove('is-hovered');
-    yellow.append(red);
+    target.classList.remove('is-hovered');
+    target.append(red);
 }
