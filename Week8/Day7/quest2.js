@@ -12,7 +12,7 @@ function getAnswer(array , number){
     let res = [];
     for (let i = 0; i < array.length-1; i++) {
         for (let j = 1; j < array.length; j++) {
-            if ((array[i]+array[j]) == num ){
+            if ((array[i]+array[j]) == number ){
                 res.push(array[i]);
                 res.push(array[j]);   
                 return res;
