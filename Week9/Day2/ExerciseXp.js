@@ -27,7 +27,11 @@ displayStudentInfo({first: 'Elie', last:'Schoppik'});
 //Exercise3
 
 const users = { user1: 18273, user2: 92833, user3: 90315 };
+console.log(Object.entries(users));
+let usersArray = Object.entries(users);
 
+usersArray.forEach((item, i, arr)=> arr[i][1] *=2);
+console.log(usersArray);
 
 //Exercise 4
 
