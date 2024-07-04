@@ -3,7 +3,7 @@ body {
     padding: 20px;
     font-family: 'Super Mario 256', sans-serif;
     background-image: url(circuit-pattern.png);
-    background-color: #bd7cf1;                                            
+    background-color: #a265d4;                                            
 }
 
 header {
@@ -40,7 +40,7 @@ header {
 
 .robot-card {
     background-image: url(card-pattern.png);
-    background-color: #f0f0f0;
+    background-color: #95c4b0;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
