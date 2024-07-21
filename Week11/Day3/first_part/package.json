@@ -1,0 +1,20 @@
+{
+  "name": "es6module-example",
+  "version": "1.0.0",
+  "description": "learning es6 syntax",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "es6",
+    "module"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "slugify": "^1.6.6"
+  }
+}
