@@ -44,16 +44,16 @@ async function getVersion(){
 //  .catch((e) => {
 //     console.log(e)
 //  })
-
-db("products")
- .update
-    ({ name:"product111", price:1100 })
- .where({id: 9})
- .returning(["id", "name", "price"])
- .then((data)=> {
-    console.log(data);
- })
- .catch((e) => {
-    console.log(e)
- });
-
+//
+//db("products")
+// .update
+//    ({ name:"product111", price:1100 })
+// .where({id: 9})
+// .returning(["id", "name", "price"])
+// .then((data)=> {
+//    console.log(data);
+// })
+// .catch((e) => {
+//    console.log(e)
+// });
+//
