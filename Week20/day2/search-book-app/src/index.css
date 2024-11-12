@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  color: #333;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.book-card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.book-card img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.book-card h3 {
+  font-size: 18px;
+}
